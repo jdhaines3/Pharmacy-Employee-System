@@ -1,0 +1,111 @@
+ALGORITHM FOR ASSIGNMENT 5
+
+David Haines
+
+GOAL: Create a menu driven program to load a text file that contains employee information, prints the said info to
+the console, lets the users enter the hours worked (same for each employee), and calculate their paychecks based 
+on each employee's position and paygrade.
+
+CLASSES:
+-Driver
+-Employee (super)
+-4 employee subclasses:
+	-Pharmacy Manager
+	-Pharmacist
+	-Technician
+	-Senior Technician
+	
+	
+	EMPLOYEE:
+	-Contains public attributes/variables for Employee ID, First Name, Last Name, Hourly rate, and start date
+		-variables must be protected so that the derived classes can inherit them. else if private, must use getters
+		and setters
+	
+	-calcPay Function in which the local copy of hours worked from driver class as an argument and which uses
+	the hourly rate to find the paycheck amount
+	
+	-printInfo function in which the employee information is formatted and printed, name variables combined into
+	one variable for easier formatting
+	
+	
+	DERIVED CLASSES:
+	-extendes employee
+	
+	-sets hourly rate for each job:
+		Pharm manager = job ID 1: 50/hr
+		Pharmacist = job ID 2: 40/hr
+		Technician = job ID 3: 20/hr
+		Senior Technician = job ID 4: 25/hr
+	
+	-for blackbelt: add job description for each subclasses, maybe add total vacation time/year, amount earned 
+	as yearly bonus, benefits, etc.
+	
+	
+	DRIVER:
+	-main class (must have all static functions/methods or else must initialize class)
+	
+	-set up imports for io; filereader etc.
+	-set up while loop conditional for first menu in which menu runs until program exit/correct input entered
+		-print menu to load file or exit, ask user to enter number for choice
+			-if 1) let user select text file with file reader; once selected go to next menu
+			-if 2) print goodbye statement and exit while loop which will end program
+			-else make user input again
+			
+			LOAD FILE: (can be method)
+			-set up Employee typed array with size of 4 (needs to be class variable if seperate method)
+			-set up fields array
+			- for loop through each line for file, skip first line for header
+			-split line by comma and take each value and place into fields array
+			
+				-use field array position of job ID to determine which subclass to call/construct
+				-use other values (employee info) in field array in contructor and place within subclass
+				-put that subclass in employee array (or 4 seperate arrays)
+				
+				-use Integer class to parseInt to convert hourly rate to int
+					-could also convert ID
+				
+			-print finished loading file---move to next menu
+			-when loading: use try catch block to make sure errors in loading file will stop program/tell user
+			something is wrong
+			
+			NEXT MENU: (can be method or placed within main)
+			-create hours worked variable
+			-Set up new while loop conditional and variable for this menu
+				-print options to do:
+					-1) print employee info
+					-2) enter hours worked
+					-3) calculate paychecks
+					-4) exit program
+				-have user input selection
+				
+				-if/elif check to determine which selection to do or if user input valid; if not valid, make
+				user re-input
+				
+				PRINT EMPLOYEE INFO:
+				-iterate through array and call each employee's printInfo method then go to next line
+				-go back to second menu (don't exit while loop)
+				
+				HOURS WORKED:
+				-ask user to enter hours worked for past week/two weeks, and set to hours worked variable
+				-must ensure hours are greater than 0.  Might also add upper limit to ensure paycheck formatting
+				works or in order to not have obscenely large numbers
+				
+				-if no int entered, make user enter number again
+				-if <0, set hours to zero and tell user
+				-if >max, set hours to max and tell user
+				-go back to second menu
+				
+				CALCULATE PAYCHECKS:
+				-iterate through object/employee array
+				-call each obj's calcPay function to use local hours worked variable and printing ID and paycheck
+				-go back to second menu
+				
+				EXIT PROGRAM:
+				-exit second while loop and first while loop by setting both conditions to false
+				
+FOR BLACKBELT:
+- to include dynamic amount of enteries loaded, make the employee array into a linked list and just use add function
+- to vary hours worked by subject: add hours worked per pay period variable to employee class
+	-loop through linked list and ask user to set hours worked
+	
+	
