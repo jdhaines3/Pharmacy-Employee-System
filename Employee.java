@@ -76,7 +76,7 @@ public class Employee
 		if (hr < 0)
 		{
 			hourlyRate = 0;
-			System.out.println("Hourly Rate below 0, setting hourly rate to 0);
+			System.out.println("Hourly Rate below 0, setting hourly rate to 0");
 		}
 		else
 		{
