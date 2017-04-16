@@ -24,7 +24,6 @@ public class Driver
 	private static int keepGoing = 0;
 	private static int keepGoing2 = 0;
 	
-	
 	//--Main Function--//
 	public static void main(String[] args)
 	{
@@ -68,11 +67,12 @@ public class Driver
 			{
 				//print that not sure what user wanted and ask to try again, then have a couple blank lines before menu pops up
 				System.out.println("I'm not sure what you are trying to do...");
-				System.out.printf("Please try again. %n%n%n");
+				System.out.printf("Please try again. %n%n");
 			}
 		}
 	}
 	//could make functions static or initialize the class
+	
 	
 	//--File Load Function--//
 	public static void loadFile()
@@ -144,9 +144,7 @@ public class Driver
 		}
 		
 		//print out message that employee file is loaded, put empty line above and below
-		System.out.println("");
-		System.out.println("Loaded employee list from file!");
-		System.out.println("");
+		System.out.printf("%nLoaded employee list from file! %n");
 	}
 	
 	
@@ -156,11 +154,15 @@ public class Driver
 		//set up scanner utility
 		Scanner nmInput = new Scanner(System.in);
 		
+		//declare hours variable
+		double hours = 0.0;
+		
 		//Second Menu while loop
 		while (keepGoing2 == 0)
 		{
 			
 			//Print Menu
+			System.out.println("");
 			System.out.println("1. Print Employee Information");
 			System.out.println("2. Enter Hours Worked");
 			System.out.println("3. Calculate Paychecks");
@@ -180,20 +182,77 @@ public class Driver
 			}
 			else if (inp.equals("1"))
 			{
-				//go through array and call emp's print info method
+				//skip line 
+				System.out.println("");
+				
+				//for each loop to iterate through array
+				for (Employee emp : empArray)
+				{
+					//call printInfo method for employee
+					emp.printInfo();
+				}
 			}
 			else if (inp.equals("2"))
 			{
-				//set hours worked variable to input
-				//make sure hours is within acceptable range
+				//ask user to enter hours
+				System.out.printf("%n%nPlease enter hours employees worked since last paycheck (0-1000):")
+				
+				//try catch to determine if input invalid
+				try
+				{
+					//set hours worked variable to input
+					String hrs = nmInput.next();
+				
+					//convert String to double
+					double hours = Double.parseDouble(hrs);
+				}
+				catch(NumberFormatException e)
+				{
+					System.out.println("This is not a valid input");
+					System.out.println("Setting hours to 0");
+					hours = 0.0;
+				}
+				
+				//make sure hours is within acceptable range, don't want huge numbers that could break program
+				if (hours < 0.0)
+				{
+					hours = 0.0;
+					System.out.println("Hours entered below 0, setting to 0");
+				}
+				else if (hours > 1000.0)
+				{
+					hours = 1000.0;
+					System.out.println("Hours exceeds max limit, setting to 1000");
+				}
 			}
 			else if (inp.equals("3"))
 			{
-				//make sure hours have been entered first and that they aren't zero
-				//if hours doesn't equal zero, go through emp array and calculate paychecks method
-				//else, print employees haven't worked any hours!
+				//blank line
+				System.out.println("");
+				
+				/*make sure hours have been entered first and that they aren't zero
+				if hours doesn't equal zero, go through emp array and calculate paychecks method
+				else, print employees haven't worked any hours! */
+				if (hours == 0.0)
+				{
+					System.out.println("No hours have been entered. All employees have earned nothing.")
+					System.out.println("Please try entering hours worked");
+				}
+				else
+				{
+					for (Employee emp : empArray)
+					{
+					//call calcPay method for employee
+					emp.calcPay();
+					}
+				}
 			}
 			else
 			{
 				//tell user that you aren't sure what they are trying to do, and to please enter it again
+				System.out.println("I'm not sure what you are trying to do...");
+				System.out.printf("Please try again. %n%n");
 			}
+		}
+	}
+}
