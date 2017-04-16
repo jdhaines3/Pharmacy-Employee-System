@@ -35,7 +35,10 @@ public class Employee
 	public void calcPay(double h)
 	{
 		//take double (hours) and multiply by hourlyRate
+		double pay = h * hourlyRate;
+		
 		//format print statement to make neat columns with ID and Pay (with only two decimal points)
+		System.out.printf("ID: %-8s \tPay: %.2f", id, pay)
 	}
 	
 	
@@ -43,5 +46,8 @@ public class Employee
 	public void printInfo()
 	{
 		//combine first and last name to one variable, name, for easier formatting
+		String name = firstName + " " + lastName;
 		//print formatted statement with ID, name variable, and startDate
-	}	
+		System.out.printf("ID: %-8s \tName: %-20s \tStart Date: %-10s \tHourly Rate: %.2f", id, name, startDate, hourlyRate)  
+	}
+}	
