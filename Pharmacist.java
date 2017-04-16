@@ -24,8 +24,8 @@ public class Pharmacist extends Employee
 	{
 		//call super class constructor
 		super(ident, fstNm, lstNm, stDt);
-		//set hourly rate; not sure if need to use setter to set hourly rate...we will see
-		hourlyRate = 40.00;
+		//set hourly rate with setter due to private access
+		setHrRate(40.00);
 	}
 	
 	//needs no new methods for base assignment

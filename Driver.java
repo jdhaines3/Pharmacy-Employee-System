@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class Driver
 {
 	//declare employee array of size 4
-	private static Employee[] empArray = new Employee[4]
+	private static Employee[] empArray = new Employee[4];
 	
 	//declare exit variables for menu while loops
 	//could do in main if wanted to write both menus in main; but separating next menu into its own function
@@ -88,7 +88,7 @@ public class Driver
 			
 			//burn first line of file (header)
 			String line = br.readLine();
-			line;
+			line = br.readLine();
 			
 			//loop through other lines in file
 			while(line != null)
@@ -117,9 +117,9 @@ public class Driver
 				}
 				else if (jobID.equals("3"))
 				{
-					Employee emp = new Technician(id, name1, name2, startDate);
+					Employee emp = new Tech(id, name1, name2, startDate);
 				}
-				else if ((jobID.equals("4"))
+				else if (jobID.equals("4"))
 				{
 					Employee emp = new SeniorTech(id, name1, name2, startDate);
 				}
@@ -195,7 +195,7 @@ public class Driver
 			else if (inp.equals("2"))
 			{
 				//ask user to enter hours
-				System.out.printf("%n%nPlease enter hours employees worked since last paycheck (0-1000):")
+				System.out.printf("%n%nPlease enter hours employees worked since last paycheck (0-1000):");
 				
 				//try catch to determine if input invalid
 				try
@@ -204,7 +204,7 @@ public class Driver
 					String hrs = nmInput.next();
 				
 					//convert String to double
-					double hours = Double.parseDouble(hrs);
+					double hrValue = Double.parseDouble(hrs);
 				}
 				catch(NumberFormatException e)
 				{
@@ -214,15 +214,19 @@ public class Driver
 				}
 				
 				//make sure hours is within acceptable range, don't want huge numbers that could break program
-				if (hours < 0.0)
+				if (hrValue < 0.0)
 				{
 					hours = 0.0;
 					System.out.println("Hours entered below 0, setting to 0");
 				}
-				else if (hours > 1000.0)
+				else if (hrValue > 1000.0)
 				{
 					hours = 1000.0;
 					System.out.println("Hours exceeds max limit, setting to 1000");
+				}
+				else
+				{
+					hours = hrValue;
 				}
 			}
 			else if (inp.equals("3"))
@@ -235,7 +239,7 @@ public class Driver
 				else, print employees haven't worked any hours! */
 				if (hours == 0.0)
 				{
-					System.out.println("No hours have been entered. All employees have earned nothing.")
+					System.out.println("No hours have been entered. All employees have earned nothing.");
 					System.out.println("Please try entering hours worked");
 				}
 				else
@@ -243,7 +247,7 @@ public class Driver
 					for (Employee emp : empArray)
 					{
 					//call calcPay method for employee
-					emp.calcPay();
+					emp.calcPay(hours);
 					}
 				}
 			}

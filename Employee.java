@@ -49,7 +49,7 @@ public class Employee
 		double pay = h * hourlyRate;
 		
 		//format print statement to make neat columns with ID and Pay (with only two decimal points)
-		System.out.printf("ID: %-8s \tPay: %.2f", id, pay)
+		System.out.printf("ID: %-8s \tPay: %.2f", id, pay);
 	}
 	
 	
@@ -59,9 +59,28 @@ public class Employee
 		//combine first and last name to one variable, name, for easier formatting
 		String name = firstName + " " + lastName;
 		//print formatted statement with ID, name variable, and startDate
-		System.out.printf("ID: %-8s \tName: %-20s \tStart Date: %-10s \tHourly Rate: %.2f", id, name, startDate, hourlyRate)  
+		System.out.printf("ID: %-8s \tName: %-20s \tStart Date: %-10s \tHourly Rate: %.2f", id, name, startDate, hourlyRate);  
 	}
 	
 	//add getters and setters
 	
+	//--Getters and Setters for Hourly Rate--//
+	public double getHrRate()
+	{
+		return hourlyRate;
+	}
+	
+	public void setHrRate(double hr)
+	{
+		//make sure hourly Rate is correct
+		if (hr < 0)
+		{
+			hourlyRate = 0;
+			System.out.println("Hourly Rate below 0, setting hourly rate to 0);
+		}
+		else
+		{
+			hourlyRate = hr;
+		}
+	}
 }	
