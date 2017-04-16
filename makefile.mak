@@ -4,6 +4,9 @@
 # Java Makefile
 # David Haines
 
+Driver.class: Driver.java
+	javac Driver.java
+	
 Employee.class: Employee.java
 	javac Employee.java
 	
@@ -18,9 +21,6 @@ SeniorTech.class: SeniorTech.java
 	
 Tech.class: Tech.java
 	javac Tech.java
-
-Driver.class: Driver.java
-	javac Driver.java
 	
 clean:
 	rm *.class
