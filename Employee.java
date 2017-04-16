@@ -1,6 +1,6 @@
 /* Honor Pledge: I pledge that I have neither 
 * given nor receieved any help on this assignment.
-* A4, Address Class
+* A5, Employee Class
 * David Haines */
 
 //import formatted printing
@@ -24,10 +24,21 @@ public class Employee
 		this.firstName = "";
 		this.lastName = "";
 		this.startDate = "";
-		this.hourlyRate = 0;
+		this.hourlyRate = 0.0;
 	}
 	
-	//don't need any other constructors, will be added in Derived classes
+	//need constructor so that subclass can call super and enable polymorphism
+	
+	//--Constructor for Subclass "Super" Keyword--//
+	public Employee(String ident, String fstNm, String lstNm, String stDt)
+	{
+		//make all variables set to constructor Strings with exception of hourlyRate which will be set in subclass
+		this.id = ident;
+		this.firstName = fstNm;
+		this.lastName = lstNm;
+		this.startDate = stDt;
+		this.hourlyRate = 0.0;
+	}
 	
 	
 	//--Calculate Payment Function--//
@@ -50,4 +61,7 @@ public class Employee
 		//print formatted statement with ID, name variable, and startDate
 		System.out.printf("ID: %-8s \tName: %-20s \tStart Date: %-10s \tHourly Rate: %.2f", id, name, startDate, hourlyRate)  
 	}
+	
+	//add getters and setters
+	
 }	
