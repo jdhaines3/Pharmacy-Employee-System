@@ -110,22 +110,32 @@ public class Driver
 				if (jobID.equals("1"))
 				{
 					Employee emp = new PharmMan(id, name1, name2, startDate);
+					
+					//put in next slot in array
+					empArray[x] = emp;
 				}
 				else if (jobID.equals("2"))
 				{
 					Employee emp = new Pharmacist(id, name1, name2, startDate);
+					
+					//put in next slot in array
+					empArray[x] = emp;
 				}
 				else if (jobID.equals("3"))
 				{
 					Employee emp = new Tech(id, name1, name2, startDate);
+					
+					//put in next slot in array
+					empArray[x] = emp;
 				}
 				else if (jobID.equals("4"))
 				{
 					Employee emp = new SeniorTech(id, name1, name2, startDate);
+					
+					//put in next slot in array
+					empArray[x] = emp;
 				}
-								
-				//put in next slot in array
-				empArray[x] = emp;
+				
 				
 				// Get the next line in the file...
 				line = br.readLine();
@@ -205,28 +215,28 @@ public class Driver
 				
 					//convert String to double
 					double hrValue = Double.parseDouble(hrs);
+					
+					//make sure hours is within acceptable range, don't want huge numbers that could break program
+					if (hrValue < 0.0)
+					{
+						hours = 0.0;
+						System.out.println("Hours entered below 0, setting to 0");
+					}
+					else if (hrValue > 1000.0)
+					{
+						hours = 1000.0;
+						System.out.println("Hours exceeds max limit, setting to 1000");
+					}
+					else
+					{
+						hours = hrValue;
+					}
 				}
 				catch(NumberFormatException e)
 				{
 					System.out.println("This is not a valid input");
 					System.out.println("Setting hours to 0");
 					hours = 0.0;
-				}
-				
-				//make sure hours is within acceptable range, don't want huge numbers that could break program
-				if (hrValue < 0.0)
-				{
-					hours = 0.0;
-					System.out.println("Hours entered below 0, setting to 0");
-				}
-				else if (hrValue > 1000.0)
-				{
-					hours = 1000.0;
-					System.out.println("Hours exceeds max limit, setting to 1000");
-				}
-				else
-				{
-					hours = hrValue;
 				}
 			}
 			else if (inp.equals("3"))
