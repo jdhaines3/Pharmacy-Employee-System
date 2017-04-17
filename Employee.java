@@ -62,7 +62,7 @@ public class Employee
 		System.out.printf("ID: %-8s \tName: %-20s \tStart Date: %-10s \tHourly Rate: %.2f %n", id, name, startDate, hourlyRate);  
 	}
 	
-	//add getters and setters
+	//add getters and setters (won't need any but hourly Rate, but added for future reusability)
 	
 	//--Getters and Setters for Hourly Rate--//
 	public double getHrRate()
@@ -82,5 +82,59 @@ public class Employee
 		{
 			hourlyRate = hr;
 		}
+	}
+	
+	//--Getters and Setters for ID--//
+	public String getID()
+	{
+		return id;
+	}
+	
+	public void setID(String idnt)
+	{
+		//make sure ID is 8 alpha-numeric digits long. If not, set to 8 zero's so user can see the error later
+		if (idnt.length() != 8)
+		{
+			System.out.println("ID must be 8 digits");
+			System.out.println("Setting ID to 00000000");
+			id = "00000000";
+		}
+		else
+		{
+			id = idnt;
+		}
+	}
+	
+	//--Getters and Setters for First and Last Name--//
+	public String getFirstName()
+	{
+		return firstName;
+	}
+	
+	public void setFirstName(String fn)
+	{
+		firstName = fn;
+	}
+	
+	public String getLastName()
+	{
+		return lastName;
+	}
+	
+	public void setLastName(String ln)
+	{
+		lastName = ln;
+	}
+	
+	//--Getter and Setter for Start Date--//
+	public String getStartDate()
+	{
+		return startDate;
+	}
+	
+	public void setStartDate(String sd)
+	{
+		//if used in future code, must parse date string to see if it is a date, then allow it to be passed as argument
+		startDate = sd;
 	}
 }	

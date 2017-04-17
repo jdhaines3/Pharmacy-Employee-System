@@ -189,7 +189,7 @@ public class Driver
 			if (inp.equals("4"))	//exit condition
 			{
 				//print exit message and exit both menu loops
-				System.out.printf("%nOk, exiting now. Have a good day!");
+				System.out.printf("%nOk, exiting now. Have a good day!%n");
 				keepGoing = 1;
 				keepGoing2 = 1;
 			}
