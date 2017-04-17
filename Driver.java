@@ -38,11 +38,12 @@ public class Driver
 		while (keepGoing == 0)
 		{
 			//print menu
+			System.out.println("");
 			System.out.println("1. Load Employees (From File)");
 			System.out.println("2. Exit Program");
 			
 			//skip line to look better and ask user to input choice
-			System.out.printf("%nPlease Enter Your Choice:");
+			System.out.printf("%nPlease Enter Your Choice:  ");
 			
 			//collect input
 			String in = input.next();
@@ -54,6 +55,7 @@ public class Driver
 			if (in.equals("2"))     //exit condition
 			{
 				//print goodbye message and exit loop
+				System.out.println("");
 				System.out.println("Ok, exiting now. Have a good day!");
 				keepGoing = 1;
 			}
@@ -66,8 +68,9 @@ public class Driver
 			else		//if neither one or two condition
 			{
 				//print that not sure what user wanted and ask to try again, then have a couple blank lines before menu pops up
+				System.out.println("");
 				System.out.println("I'm not sure what you are trying to do...");
-				System.out.printf("Please try again. %n%n");
+				System.out.println("Please try again.");
 			}
 		}
 	}
@@ -90,12 +93,12 @@ public class Driver
 			String line = br.readLine();
 			line = br.readLine();
 			
+			//declare array position variable
+			int x = 0;
+			
 			//loop through other lines in file
 			while(line != null)
 			{
-				//declare array position variable
-				int x = 0;
-				
 				//split line by comma and put each string into an array
 				String[] values = line.split(",");
 				
@@ -177,7 +180,7 @@ public class Driver
 			System.out.println("2. Enter Hours Worked");
 			System.out.println("3. Calculate Paychecks");
 			System.out.println("4. Exit Program");
-			System.out.printf("%nPlease enter your selection:");
+			System.out.printf("%nPlease enter your selection:  ");
 			
 			//get user input
 			String inp = nmInput.next();
@@ -186,7 +189,7 @@ public class Driver
 			if (inp.equals("4"))	//exit condition
 			{
 				//print exit message and exit both menu loops
-				System.out.println("Ok, exiting now. Have a good day!");
+				System.out.printf("%nOk, exiting now. Have a good day!");
 				keepGoing = 1;
 				keepGoing2 = 1;
 			}
@@ -205,7 +208,7 @@ public class Driver
 			else if (inp.equals("2"))
 			{
 				//ask user to enter hours
-				System.out.printf("%n%nPlease enter hours employees worked since last paycheck (0-1000):");
+				System.out.printf("%nPlease enter hours employees worked since last paycheck (0-1000):  ");
 				
 				//try catch to determine if input invalid
 				try
@@ -220,12 +223,14 @@ public class Driver
 					if (hrValue < 0.0)
 					{
 						hours = 0.0;
-						System.out.println("Hours entered below 0, setting to 0");
+						System.out.println("");
+						System.out.println("Hours entered below 0, setting to 0.");
 					}
 					else if (hrValue > 1000.0)
 					{
 						hours = 1000.0;
-						System.out.println("Hours exceeds max limit, setting to 1000");
+						System.out.println("");
+						System.out.println("Hours exceeds max limit, setting to 1000.");
 					}
 					else
 					{
@@ -250,10 +255,11 @@ public class Driver
 				if (hours == 0.0)
 				{
 					System.out.println("No hours have been entered. All employees have earned nothing.");
-					System.out.println("Please try entering hours worked");
+					System.out.println("Please try entering hours worked.");
 				}
 				else
 				{
+					//iterate through array
 					for (Employee emp : empArray)
 					{
 					//call calcPay method for employee
@@ -264,8 +270,9 @@ public class Driver
 			else
 			{
 				//tell user that you aren't sure what they are trying to do, and to please enter it again
+				System.out.println("");
 				System.out.println("I'm not sure what you are trying to do...");
-				System.out.printf("Please try again. %n%n");
+				System.out.println("Please try again.");
 			}
 		}
 	}
